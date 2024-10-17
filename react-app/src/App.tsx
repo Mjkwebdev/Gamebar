@@ -1,10 +1,17 @@
 import ListGroup from "./ListGroup";
-import Message from "./Message";
+
 function App() {
   const list = ["red", "green", "blue"];
+  const handleSelectedItem = (list: string) => {
+    console.log("clicked");
+  };
   return (
     <div>
-      <ListGroup items={list} heading="Color"></ListGroup>
+      <ListGroup
+        onSelectItem={handleSelectedItem}
+        items={list}
+        heading="Color"
+      ></ListGroup>
     </div>
   );
 }
