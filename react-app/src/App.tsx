@@ -1,17 +1,12 @@
-import ListGroup from "./ListGroup";
+import Alert from "./Alert";
 
 function App() {
-  const list = ["red", "green", "blue"];
-  const handleSelectedItem = (list: string) => {
-    console.log("clicked");
-  };
   return (
     <div>
-      <ListGroup
-        onSelectItem={handleSelectedItem}
-        items={list}
-        heading="Color"
-      ></ListGroup>
+      <Alert>
+        {" "}
+        <h2> Its an Alert</h2>
+      </Alert>
     </div>
   );
 }
