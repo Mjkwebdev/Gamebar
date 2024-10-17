@@ -1,9 +1,10 @@
 import ListGroup from "./ListGroup";
 import Message from "./Message";
 function App() {
+  const list = ["red", "green", "blue"];
   return (
     <div>
-      <ListGroup></ListGroup>
+      <ListGroup items={list} heading="Color"></ListGroup>
     </div>
   );
 }
