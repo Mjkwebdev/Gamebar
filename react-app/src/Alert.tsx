@@ -16,6 +16,7 @@ const Alert = ({ children, onClose, color }: Props) => {
         onClick={onClose}
       ></button>
     </div>
+    
   );
 };
 

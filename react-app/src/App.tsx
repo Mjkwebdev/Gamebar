@@ -1,6 +1,6 @@
 import "./App.css";
+import Like from "./Like";
 import ListGroup from "./Listgroup";
-import { MdCalculate } from "react-icons/md";
 
 function App() {
   const list = ["red", "green", "blue"];
@@ -14,7 +14,7 @@ function App() {
         items={list}
         heading="Color"
       ></ListGroup>
-      <MdCalculate color="red" size={40} />
+      <Like onClick={() => console.log("Clicked")} />
     </div>
   );
 }
