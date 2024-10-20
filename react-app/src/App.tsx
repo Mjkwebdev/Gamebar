@@ -1,5 +1,6 @@
 import "./App.css";
 import ListGroup from "./Listgroup";
+import { MdCalculate } from "react-icons/md";
 
 function App() {
   const list = ["red", "green", "blue"];
@@ -13,6 +14,7 @@ function App() {
         items={list}
         heading="Color"
       ></ListGroup>
+      <MdCalculate color="red" size={40} />
     </div>
   );
 }
