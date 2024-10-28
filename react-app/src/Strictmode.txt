@@ -1,0 +1,7 @@
+strict mose is use to catch potential components 
+one of problem is pure components
+it renders every elements twice 
+First render is use to catch potential 
+and second render is use to update the component
+
+it only behaves this in developing mode
