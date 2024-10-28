@@ -1,8 +1,10 @@
+
 import "./App.css";
 import Like from "./Like";
 import ListGroup from "./Listgroup";
 
 function App() {
+  
   const list = ["red", "green", "blue"];
   const handleSelectedItem = (list: string) => {
     console.log("clicked");

@@ -1,0 +1,9 @@
+Why do we use states?
+i. We can add a state to a component
+react Update states synchronously
+not immediately 
+it means updating any value in future
+we could set the multiple state variables
+
+ii. state is stored outside the component     
+always used at the top of component

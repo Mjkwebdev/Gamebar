@@ -1,0 +1,13 @@
+Give the same input gets the same outputs
+if we call a function 10 times we get the same result
+thats pure 
+but if we gets the different result every time we gives the input 
+thats impure
+React also works on the same concept
+like 
+we give a same props and gets the same jsx 
+due to performance reason 
+
+How do we keep it pure 
+use any variable and updation inside the component 
+keep the variable away from rendering phase
