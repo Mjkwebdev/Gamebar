@@ -1,8 +1,8 @@
-import Forms from "./Forms";
+import Form from "./Formsstatehook";
+import Forms from "./FormswithRef";
+
 function App() {
-  return (
-    <Forms></Forms>
-  );
+  return <Form></Form>;
 }
 
 export default App;
