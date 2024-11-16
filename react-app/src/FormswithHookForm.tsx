@@ -7,14 +7,14 @@ const schema = z.object({
   name: z.string().min(3, { message: "Name must be at least 3 numbers" }),
   age: z
     .number({ invalid_type_error: "Required" })
-    .min(18, {message: "number must be greater than 18"}),
+    .min(18, { message: "number must be greater than 18" }),
 });
 type FormData = z.infer<typeof schema>;
 const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
   const onSubmit = (data: FieldValues) => console.log(data);
   return (
@@ -44,7 +44,7 @@ const Form = () => {
         />
         {errors.age && <p className="text-danger"> {errors.age.message} </p>}
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button disabled={!isValid} type="submit" className="btn btn-primary">
         {" "}
         Submit
       </button>
