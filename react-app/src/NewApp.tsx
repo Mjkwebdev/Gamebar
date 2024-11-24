@@ -5,7 +5,6 @@ interface Users {
   id: number;
   name: string;
 }
-
 function App() {
   const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
