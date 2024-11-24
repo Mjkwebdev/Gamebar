@@ -18,7 +18,6 @@ const Expensefilterr = ({ onSelectCategory }: Props) => {
           </option>
         ))}
       </select>
-
     </div>
   );
 };
