@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import ProductList from "./RefHook/ProductList";
-
 function App() {
+
+  const connect = () => console.log('connecting');
+  const disconnect = ()=> console.log("Disconnect");
+
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -9,6 +12,9 @@ function App() {
   });
   useEffect(() => {
     document.title = "My app";
+    connect();
+
+    return ()=> disconnect();
   });
 
   const [category, setCategory] = useState("");
