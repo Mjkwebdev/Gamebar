@@ -1,37 +1,25 @@
-import { useEffect, useRef, useState } from "react";
-import ProductList from "./RefHook/ProductList";
-function App() {
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-  const connect = () => console.log('connecting');
-  const disconnect = ()=> console.log("Disconnect");
-
-  const ref = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (ref.current) ref.current.focus();
-  });
-  useEffect(() => {
-    document.title = "My app";
-    connect();
-
-    return ()=> disconnect();
-  });
-
-  const [category, setCategory] = useState("");
-  return (
-    <div>
-      <select
-        className="form-select"
-        onChange={(event) => setCategory(event.target.value)}
-      >
-        <option value=""></option>
-        <option value="Clothing">Clothing</option>
-        <option value="Household">HouseHold</option>
-      </select>
-
-      <ProductList category={category} />
-    </div>
-  );
+interface Users {
+  id: number;
+  name: string;
 }
 
+function App() {
+  const [users, setUsers] = useState<Users[]>([]);
+  useEffect(() => {
+    axios
+      .get<Users[]>("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
+    // It returns a promise object
+  }, []);
+  return (
+    <ul>
+      {users.map((users) => (
+        <li key={users.id}>{users.name}</li>
+      ))}
+    </ul>
+  );
+}
 export default App;
