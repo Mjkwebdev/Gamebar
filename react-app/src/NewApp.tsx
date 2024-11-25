@@ -9,7 +9,7 @@ interface Users {
 function App() {
   const [users, setUsers] = useState<Users[]>([]);
   const [error, seterr] = useState("");
-  const [loading, isloading]=useState(false);
+  const [loading, isloading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
     const fetchUsers = async () => {
@@ -34,13 +34,34 @@ function App() {
 
     // get returns a promise object
   }, []);
+  const deleteUser = (user: Users) => {
+    const originalUsers = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+    axios
+      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
+      .catch((err) => {
+        seterr(err.message);
+        setUsers(originalUsers);
+      });
+  };
   return (
     <>
       {error && <p className="text-danger">{error}</p>}
-      {loading&& <div className="spinner-border"></div>}
-      <ul>
+      {loading && <div className="spinner-border"></div>}
+      <ul className="list-group">
         {users.map((users) => (
-          <li key={users.id}>{users.name}</li>
+          <li
+            key={users.id}
+            className="list-group-item d-flex justify-content-between"
+          >
+            {users.name}
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => deleteUser(users)}
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
     </>
