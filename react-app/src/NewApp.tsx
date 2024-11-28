@@ -2,33 +2,13 @@ import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { CanceledError } from "./service/api-client";
 import userService, { Users } from "./service/userService";
+import useUsers from "./Hooks/useUsers";
 function App() {
-  const [users, setUsers] = useState<Users[]>([]);
-  const [error, seterr] = useState("");
-  const [loading, isloading] = useState(false);
-  useEffect(() => {
-    isloading(true);
-
-    const { request, cancel } = userService.getAll<Users>();
-    request
-      .then((res) => {
-        setUsers(res.data);
-        isloading(false);
-      })
-      .catch((err) => {
-        {
-          if (err instanceof CanceledError) return;
-          seterr((err as AxiosError).message);
-          isloading(false);
-        }
-      });
-    return cancel();
-  }, []);
-
+  const { users, error, loading, setUsers, seterr } = useUsers();
   // get returns a promise object
   const deleteUser = (user: Users) => {
     const originalUsers = [...users];
-    setUsers(users.filter((u) => u.id !== user.id));
+    setUsers(users.filter((u: { id: number; }) => u.id !== user.id));
     userService.delete(user.id).catch((err) => {
       seterr(err.message);
       setUsers(originalUsers);
